@@ -1,6 +1,7 @@
 
 using Microsoft.EntityFrameworkCore;
 using UrlShortenerApi.Data;
+using UrlShortenerApi.Services;
 
 namespace UrlShortenerApi
 {
@@ -15,6 +16,7 @@ namespace UrlShortenerApi
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
             builder.Services.AddAutoMapper(typeof(Program));
+            builder.Services.AddScoped<IUrlService, UrlService>();
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
