@@ -7,5 +7,7 @@ namespace UrlShortenerApi.Services
     {
         Task<ShortUrl> CreateShortUrlAsync(ShortUrlCreateDto dto);
         Task<ShortUrl> GetByCodeAsync(string code);
+        Task<bool> DeleteByCodeAsync(string code);
+
     }
 }

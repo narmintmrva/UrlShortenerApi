@@ -48,5 +48,15 @@ namespace UrlShortenerApi.Services
 
             return result;
         }
+        public async Task<bool> DeleteByCodeAsync(string code)
+        {
+            var shortUrl = await _context.ShortUrls.FirstOrDefaultAsync(x => x.ShortCode == code);
+            if (shortUrl == null) return false;
+
+            _context.ShortUrls.Remove(shortUrl);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
     }
 }
