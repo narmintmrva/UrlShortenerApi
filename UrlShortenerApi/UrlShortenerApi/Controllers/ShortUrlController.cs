@@ -64,5 +64,13 @@ namespace UrlShortenerApi.Controllers
             return NoContent();
         }
 
+        [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<ShortUrlReadDto>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetAllShortUrls()
+        {
+            var urls = await _urlService.GetAllAsync();
+            return Ok(_mapper.Map<IEnumerable<ShortUrlReadDto>>(urls));
+        }
+
     }
 }

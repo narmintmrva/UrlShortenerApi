@@ -57,6 +57,10 @@ namespace UrlShortenerApi.Services
             await _context.SaveChangesAsync();
             return true;
         }
+        public async Task<IEnumerable<ShortUrl>> GetAllAsync()
+        {
+            return await _context.ShortUrls.ToListAsync();
+        }
 
     }
 }
